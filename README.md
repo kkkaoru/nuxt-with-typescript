@@ -1,12 +1,20 @@
 # Nuxt example with TypeScript
 
+## Needs
+
+- [direnv](https://direnv.net/)
+
 ## Build Setup
 
 ```bash
+# Set env
+$ cp .env.sample .env
+$ direnv allow .
+
 # install dependencies
 $ yarn
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost
 $ yarn dev
 
 # build for production and launch server
