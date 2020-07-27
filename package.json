@@ -19,9 +19,7 @@
     "lint:eslint": "eslint --fix --ext .js,.ts,.vue --ignore-path .gitignore .",
     "lint:stylelint": "stylelint './**/*.{scss,vue}' --fix",
     "clean:cache": "rm -rf node_modules/.cache/hard-source/",
-    "test": "jest",
-    "sls": "sls",
-    "sls:offline": "cross-env NODE_ENV=production sls offline start"
+    "test": "jest"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
