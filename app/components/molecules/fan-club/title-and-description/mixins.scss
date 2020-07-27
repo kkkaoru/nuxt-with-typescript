@@ -1,0 +1,16 @@
+@mixin common-texts-parent {
+  padding: 0.8rem var(--size-fanclub-space) 0;
+  background-color: var(--color-white);
+}
+
+@mixin common-title($color, $size) {
+  color: $color;
+  font-size: $size;
+  line-height: 1.24;
+}
+
+@mixin common-description($padding-size) {
+  padding-top: $padding-size;
+  color: rgba(var(--color-black-rgb), 0.7);
+  font-size: 1.3rem;
+}

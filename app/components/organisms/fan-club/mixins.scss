@@ -1,0 +1,40 @@
+@mixin centering-style {
+  width: 100%;
+  max-width: var(--size-fanclub-max-width);
+}
+@mixin common-padding {
+  padding: 0 var(--size-sp-safe-space);
+}
+@mixin common-list-layout {
+  padding: 2.4rem 0 3.2rem;
+  background-color: var(--color-white);
+  &__title {
+    @include common-padding;
+    display: flex;
+    justify-content: center;
+    color: rgba(11, 13, 45, 0.9);
+    font-size: 2.3rem;
+    &--sub {
+      @include common-padding;
+      color: rgba(11, 13, 45, 0.7);
+      font-size: var(--size-font-default);
+    }
+  }
+  &__title-text {
+    @include centering-style;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__container {
+    @include centering-style;
+    padding-top: 2.4rem;
+  }
+  &__button-wrap {
+    box-sizing: content-box;
+    height: 5.6rem;
+    padding: 3.2rem var(--size-sp-safe-space) 0;
+  }
+}

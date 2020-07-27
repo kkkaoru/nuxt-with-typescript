@@ -1,0 +1,12 @@
+@mixin overwrite-flicking-styles ($view-port-height) {
+  // For show carousel controller
+  transform: translate3d(0, 0, -0.1rem);
+  & .eg-flick-camera {
+    // Fix image position when first rendering
+    display: flex;
+  }
+  & .eg-flick-viewport {
+    // Fix height when show from any page
+    height: $view-port-height !important;
+  }
+}

@@ -1,0 +1,17 @@
+@mixin icon-style ($left-position){
+  $icon-size: 6.4rem;
+  position: absolute;
+  top: calc(-#{$icon-size} + var(--size-sp-safe-space));
+  left: $left-position;
+  width: $icon-size;
+  height: $icon-size;
+  background-color: var(--color-white);
+  border: 0.4rem solid var(--color-green);
+  border-radius: 2em;
+}
+
+@mixin base-bottom-style {
+  position: relative;
+  height: var(--size-sp-safe-space);
+  background-color: var(--color-white);
+}

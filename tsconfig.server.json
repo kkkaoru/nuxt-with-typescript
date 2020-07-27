@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "noEmit": false
+  },
+  "include": ["server/handler.ts"],
+  "exclude": ["app/"]
+}

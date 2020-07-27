@@ -1,0 +1,115 @@
+service:
+  name: ${self:custom.NAME}
+
+frameworkVersion: '>=1.27.0'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-northeast-1
+  stage: ${self:custom.STAGE}
+  vpc: ${self:custom.lambdaVPC}
+  apiKeys:
+    - name: ${opt:stage, 'dev'}-api-key
+      value: ${env:API_GATEWAY_KEY}
+
+custom:
+  NAME: fanclub-ui
+  STAGE: ${file(./env.config.js):exporter.STAGE}
+  BASE_URL: ${file(./env.config.js):exporter.BASE_URL}
+  ENDPOINT_ENV: ${file(./env.config.js):exporter.ENDPOINT_ENV}
+  NODE_ENV: ${file(./env.config.js):exporter.NODE_ENV}
+  dotenv:
+    exclude:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+  s3Sync:
+    - bucketName: fanclub-ui-${opt:stage}-asset
+      localDir: .nuxt/dist/deploy
+      params:
+        # 31536000 = 60 * 60 * 24 * 365
+        - "**/*":
+            CacheControl: "public, max-age=31536000"
+  serverless-offline:
+    port: ${env:NUXT_PORT}
+  private:
+    cf: true
+    api_gw: false
+  resources:
+    cf:
+      - ${file(./aws-config/asset-bucket.yml)}
+      - ${file(./aws-config/static-bucket.yml)}
+      - ${file(./aws-config/cloudfront-origin-access-identity.yml)}
+      - ${file(./aws-config/cloudfront.yml)}
+      - ${file(./aws-config/route53.yml)}
+    api_gw:
+      - ${file(./aws-config/asset-bucket.yml)}
+      - ${file(./aws-config/cloudfront-origin-access-identity.yml)}
+  assetBucketName: fanclub-ui-${opt:stage}-asset
+  staticBucketName: fanclub-${opt:stage}-static
+  lambdaVPC:
+    securityGroupIds:
+      - ${env:LAMBDA_SECURITY_GROUP}
+    subnetIds:
+      - ${env:LAMBDA_SUBNET_1}
+      - ${env:LAMBDA_SUBNET_2}
+      - ${env:LAMBDA_SUBNET_3}
+
+# 少しでもデプロイのパッケージファイルを少なくする
+package:
+  excludeDevDependencies: true
+  exclude:
+    - .**
+    - .**/*
+    - app/**
+    - test/*
+    - server/*
+    - LICENSE
+    - README.md
+    - package.json
+    - yarn.lock
+    - test/*
+    # Node.js 上で使われないモジュール
+    # 重いものを優先的に除外
+    - node_modules/babel**/**
+    - node_modules/caniuse-db/**
+    - node_modules/prettier/**
+    - node_modules/yargs/**
+    - node_modules/xxhashjs/**
+    - node_modules/jschardet/**
+    - node_modules/**/*.md
+    - node_modules/**/bin/**
+    - node_modules/.cache/**
+  include:
+    - .nuxt/**
+    - dist/**
+    - node_modules/autoprefixer/**
+    - node_modules/fibers/**
+    - .env.main.sample
+plugins:
+  - serverless-offline
+  # .env対応プラグイン
+  - serverless-dotenv-plugin
+  # s3対応プラグイン
+  - serverless-s3-sync
+
+resources: ${self:custom.resources.${env:ENDPOINT_ENV}}
+
+functions:
+  render:
+    handler: dist/server/handler.render
+    timeout: 30
+    memorySize: 512
+    environment:
+      BASE_URL: ${self:custom.BASE_URL}
+      ENDPOINT_ENV: ${self:custom.ENDPOINT_ENV}
+      NODE_ENV: ${self:custom.NODE_ENV}
+    events:
+      - http:
+          path: '/'
+          method: get
+          private: ${self:custom.private.${env:ENDPOINT_ENV}}
+      - http:
+          path: '{proxy+}'
+          method: get
+          private: ${self:custom.private.${env:ENDPOINT_ENV}}

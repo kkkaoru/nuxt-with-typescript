@@ -1,0 +1,26 @@
+@mixin common-alert($background-color, $icon-color, $font-color) {
+  $padding: 0.8rem;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  width: 100%;
+  height: calc(var(--size-header-height) - (#{$padding} / 2));
+  padding: $padding;
+  background-color: $background-color;
+
+  &__icon {
+    fill: $icon-color;
+  }
+  &__message {
+    flex: 1;
+    padding-left: 0.8rem;
+    color: $font-color;
+    font-size: 1.3rem;
+    @include md {
+      font-size: var(--size-font-default);
+    }
+  }
+  &__close-button {
+    margin-left: auto;
+  }
+}
