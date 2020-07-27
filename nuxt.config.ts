@@ -117,7 +117,7 @@ const configuration = {
   /*
    ** Nuxt.js modules
    */
-  modules: ['nuxt-webfontloader', '@nuxtjs/style-resources', '@nuxtjs/axios', 'portal-vue/nuxt', '@nuxtjs/sentry'],
+  modules: ['nuxt-webfontloader', '@nuxtjs/style-resources', '@nuxtjs/axios', '@nuxtjs/sentry'],
   webfontloader: {
     google: {
       families: ['Noto+Sans+JP:300,500,700&display=swap'],
