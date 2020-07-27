@@ -23,7 +23,7 @@ import { Plugin } from '@egjs/flicking';
 import { userCarouselController } from '../uses/';
 import { bannerOptions, commonAutoPlayOptions } from '@/utils/carousel';
 import { Banner } from '@/types/banner';
-import FlickingWraper from '@/components/atoms/flicking/index.vue';
+import FlickingWraper from '@/components/molecules/flicking/index.vue';
 import BannerComponent from '@/components/atoms/banner/index.vue';
 import ArrowButton from '@/components/atoms/button/arrow/round.vue';
 
