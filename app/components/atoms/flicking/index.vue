@@ -53,7 +53,4 @@ export default defineComponent({
 .flicking {
   @include overwrite-flicking-styles(var(--height-carousel));
 }
-.flicking--card {
-  @include overwrite-flicking-styles(var(--size-card-fanclub));
-}
 </style>
