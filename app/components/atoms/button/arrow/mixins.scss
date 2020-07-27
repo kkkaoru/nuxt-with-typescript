@@ -1,0 +1,9 @@
+@mixin common-arrow {
+  transform: translate3d(0, 0, 1px);
+  cursor: pointer;
+  opacity: 0.4;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 1;
+  }
+}

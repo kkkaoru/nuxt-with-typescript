@@ -1,0 +1,36 @@
+@import 'sanitize.css/sanitize.css';
+
+$default-font-family: 'Noto Sans JP', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, sans-serif;
+
+html {
+  overflow-x: hidden;
+  font-size: 62.5%;
+  font-family: $default-font-family;
+}
+body {
+  width: 100%;
+  min-width: var(--size-page-min-width);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--color-navy-darkest);
+  font-size: var(--size-font-default);
+  background-color: var(--color-white-darkest);
+}
+ul,
+dl,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+ul,
+dl {
+  list-style: none;
+}
+pre {
+  font-family: $default-font-family;
+  white-space: pre-wrap;
+}

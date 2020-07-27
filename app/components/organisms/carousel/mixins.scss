@@ -1,0 +1,18 @@
+@mixin prev-button-position ($top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin next-button-position ($top, $right) {
+  position: absolute;
+  top: $top;
+  right: $right;
+}
+
+@mixin show-only-pc {
+  display: none;
+  @include md {
+    display: block;
+  }
+}
