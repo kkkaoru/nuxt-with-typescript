@@ -44,7 +44,7 @@ const configuration = {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://placehold.it/1200x630',
+        content: 'https://via.placeholder.com/1200x630',
       },
       {
         hid: 'twitter:card',

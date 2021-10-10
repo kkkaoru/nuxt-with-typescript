@@ -3,8 +3,8 @@ import { Banner } from '@/types/banner';
 const mockBanner: Banner = {
   id: 0,
   name: 'SAMPLE BANNER 1',
-  linkUrl: 'https://placehold.it/',
-  imageUrl: 'https://placehold.it/1920x1080',
+  linkUrl: 'https://placeholder.com/',
+  imageUrl: 'https://via.placeholder.com/1920x1080',
 };
 
 export const mockBannerHasOne: Banner[] = [mockBanner];

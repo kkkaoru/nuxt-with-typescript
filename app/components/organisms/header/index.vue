@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <nuxt-link :to="logoLink">
-      <img class="header__logo" src="https://placehold.it/500x200" />
+      <img class="header__logo" src="https://via.placeholder.com/500x200" />
     </nuxt-link>
   </header>
 </template>

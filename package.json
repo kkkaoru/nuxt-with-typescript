@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Front-end of web for fan-club",
   "engines": {
-    "node": "^12.15.0"
+    "node": "^14.17.6"
   },
   "engineStrict": true,
   "private": true,
@@ -49,6 +49,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@vue/composition-api": "^0.6.7",
+    "aws-lambda": "^1.0.6",
     "aws-serverless-express": "^3.3.8",
     "camelcase-keys": "^6.2.2",
     "fibers": "^5.0.0",
